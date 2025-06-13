@@ -1,10 +1,12 @@
 const express = require('express');
-const {getComments,addComment}= require('../controllers/comment');
+const router = express.Router();
+const { getComments, addComment } = require('../controllers/comment');
 const auth = require('../middleware/auth');
 
-const router = express.Router();
+// Get comments for a post
+router.get('/post/:postId', (req, res) => getComments(req, res));
 
-router.get('/post/:postId',getComments);
-router.post('/post/:postId', auth,addComment);
+// Add a comment to a post
+router.post('/post/:postId', auth, (req, res) => addComment(req, res));
 
 module.exports = router;
