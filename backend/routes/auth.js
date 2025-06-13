@@ -1,11 +1,10 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../models/user");
-const {createAccount,login}=require('../controllers/auth');
+const express = require('express');
+const {signup,login,getTotalUsers} = require('../controllers/auth');
+
 const router = express.Router();
 
-router.post("/register",createAccount);
-router.post("/login",login);
+router.post('/signup', signup);
+router.post('/login', login);
+router.get('/total-users',getTotalUsers);
 
 module.exports = router;
