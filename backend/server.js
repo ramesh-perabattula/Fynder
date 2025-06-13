@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const postRoutes = require("./routes/post");
 const userRoutes= require("./routes/auth");
+const commentRoutes=require("./routes/comment");
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(cors());
 
 app.use("/api/posts", postRoutes);
 app.use("/api/user",userRoutes);
+app.use("/api/comment",commentRoutes);
 
 
 app.get("/", (req, res) => {
